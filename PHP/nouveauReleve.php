@@ -64,13 +64,17 @@ function IsEmpty(){
                 echo "</tr>";
                 
             }     
+        $idcontroleur = $_GET['idcontroleur'];
         echo"<form name ='frm' action='update.php' method='GET'>";
         echo "<input type='number' name ='value' id='value' min='$line[3]'/> <br />";
+        echo "<br>";         
+        echo "<input type='hidden' name ='id' id='id' value='$line[4]'></input>";
+        echo "<input type='hidden' name ='dernierReleve' id='dernierReleve' value='$line[3]'></input>";
+        echo "<input type='hidden' name ='nom' id='nom' value='$line[0]'></input>";
+        echo "<input type='hidden' name ='prenom' id='prenom' value='$line[1]'></input>";
+        echo "<input type='hidden' name ='idcontroleur' id='idcontroleur' value='".$idcontroleur."'></input>";
         echo "<br>";
-        echo "<input type='hidden' name ='id' id='id'value='$line[4]'></input>";
-        echo "<input type='hidden' name ='dernierReleve' id='dernierReleve'value='$line[3]'></input>";
-        echo "<br>";
-        echo"<input type='submit' name ='inserer' value='Inserer' onclick='return IsEmpty()' />";
+        echo"<input type='submit' onclick='return IsEmpty()' />";
         echo"</form>";
 
     ?>

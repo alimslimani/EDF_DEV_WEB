@@ -12,11 +12,11 @@
         include 'cnx.php';
         echo "<h1> Liste des clients du controleur ".$_GET['nom']." - ".$_GET['prenom']."</h1>";
         // write query 
-        $sql = $cnx->prepare("select nom,prenom,ancienReleve,dernierReleve
+        $sql = $cnx->prepare("select nom,prenom,ancienReleve,dernierReleve,idcontroleur
         from client where idcontroleur ='".$_GET['id']."'");
         // execure query
         $sql->execute();
-       echo "<table>";
+        echo "<table>";
         // travailler avec des numéro au lieu des association
             foreach($sql-> fetchAll(PDO::FETCH_NUM) as $line){
                 echo "<tr>";
@@ -24,13 +24,13 @@
                 echo "<td>".$line[1]."</td>";
                 echo "<td>".$line[2]."</td>";
                 echo "<td>".$line[3]."</td>";
-                echo "<td><a href='nouveauReleve.php?nom=".$line[0]."&prenom=".$line[1]."&ancienReleve=".$line[2]."&dernierReleve=".$line[3]."'> Nouveau Releve </a></td>";			
+                echo "<td><a href='nouveauReleve.php?nom=".$line[0]."&prenom=".$line[1]."&ancienReleve=".$line[2]."&dernierReleve=".$line[3]."&idcontroleur=".$line[4]."'> Nouveau Releve </a></td>";			
                 echo "</tr>";
                 echo "</tr>";
             }
         echo "</table>";     
         echo "<br>";
-        echo '<input type="button" value="Retour" onclick="history.go(-1)">';
+        echo '<input type="button" value="Retour" class="btn btn-primary" background-color ="royalblue" onclick="history.go(-1)">';
     ?>
 </body>
 </html>
